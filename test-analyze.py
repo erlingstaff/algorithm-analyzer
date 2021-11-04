@@ -2,10 +2,13 @@ import random
 import matplotlib.pyplot as plt
 import numpy as np
 import math
+import time
+import timeit
+
 
 cnt = 0
-
 def mergeSort(myList):
+
     global cnt
     cnt += 1
     if len(myList) > 1:
@@ -26,8 +29,7 @@ def mergeSort(myList):
         k = 0
         
         while i < len(left) and j < len(right):
-            cnt += 1
-
+            cnt +=1
             if left[i] <= right[j]:
               # The value from the left half has been used
               myList[k] = left[i]
@@ -41,8 +43,7 @@ def mergeSort(myList):
 
         # For all the remaining values
         while i < len(left):
-            cnt += 1
-
+            cnt+=1
             myList[k] = left[i]
             i += 1
             k += 1
@@ -54,6 +55,10 @@ def mergeSort(myList):
             j += 1
             k += 1
 
+def callfunc(arr):
+    #random.shuffle(arr)
+    #mergeSort(arr)
+    finda(arr)
 
 
 
@@ -89,10 +94,8 @@ def finda(a):
     pass
     cnt = 0
 
-    for _ in a:
-        cnt += 1
 
-    allcnt.append(cnt)
+    #allcnt.append(cnt)
 
 
 
@@ -102,21 +105,40 @@ arr = []
 
 cntx = []
 cntamnt = []
-
-
+global timerr
+timerr = []
 
 for x in range(200):
     arr.append(x)
     cntamnt.append(int(x))
     allcnt = []
-    for _ in range(10):
+    #timerr.append(timeit.timeit(lambda: callfunc(arr), number=100))
+    timerr.append(timeit.timeit(lambda: callfunc(arr), number=100)/100)
+    '''for _ in range(10):
         random.shuffle(arr)
         cnt = 0
-        print(x, cnt)
+        start = time.process_time()
+
         mergeSort(arr)
-        print(x, cnt)
-        allcnt.append(cnt)
-    cntx.append(max(allcnt))
+        end = time.time
+        timer.append(time.process_time() - start)
+        #allcnt.append(cnt)
+    cntx.append(max(timer))
+    print(max(timer))'''
+    #print(timer)
+
+print("ABCD", timerr[0])
+yy = [0.5 for _ in range(200)]
+print("BBB", yy[0])
+
+plt.figure(figsize=(14,8))
+xb = np.array(timerr)
+yb = np.array(yy)
+
+
+plt.plot(xb)
+plt.legend()
+plt.show()
 
 
 
@@ -134,8 +156,6 @@ y8 = np.array([math.factorial(x) for x in range(10)])
 
 
 
-
-
 plt.plot(x, y, label="Algorithm")
 plt.plot(x, y2, label="O(n^2)")
 plt.plot(x, y3, label="O(1)")
@@ -144,6 +164,7 @@ plt.plot(x, y5, label="O(n)")
 plt.plot(x, y6, label="O(n log n)")
 plt.plot(x, y7, label="O(2^n)")
 plt.plot(xfac, y8, label="O(n!)")
+
 
 
 plt.legend()
