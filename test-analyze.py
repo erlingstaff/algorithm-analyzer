@@ -1,8 +1,7 @@
 import random
-from types import AsyncGeneratorType
 import matplotlib.pyplot as plt
 import numpy as np
-
+import math
 
 def bubbleSort(arr):
     cnt = 0
@@ -45,11 +44,38 @@ for x in range(200):
 
 
 plt.figure(figsize=(14,8))
-x = np.array(cntx)
-y = np.array(cntamnt)
-plt.plot(y, x)
+y = np.array(cntx)
+x = np.array(cntamnt)
+xfac = np.array([x for x in range(10)])
+y2 = np.array([x*x for x in range(200)])
+y3 = np.array([1 for _ in range(200)])
+y4 = np.array([math.log(x+1, 10) for x in range(200)])
+y5 = np.array([x for x in range(200)])
+y6 = np.array([(x+1)*(math.log(x+1, 10)) for x in range(200)])
+y7 = np.array([2**x for x in range(200)])
+y8 = np.array([math.factorial(x) for x in range(10)])
+
+plt.plot(x, y, label="Algorithm")
+plt.plot(x, y2, label="O(n^2)")
+plt.plot(x, y3, label="O(1)")
+plt.plot(x, y4, label="O(log n)")
+plt.plot(x, y5, label="O(n)")
+plt.plot(x, y6, label="O(n log n)")
+plt.plot(x, y7, label="O(2^n)")
+plt.plot(xfac, y8, label="O(n!)")
+
+
+plt.legend()
+plt.ylim(0, 1000)
+
 plt.show()
 
+def generate_functions():
+    pass
+
+
+def evaluate():
+    pass
 
 
 '''
