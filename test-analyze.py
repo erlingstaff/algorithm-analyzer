@@ -3,25 +3,99 @@ import matplotlib.pyplot as plt
 import numpy as np
 import math
 
+cnt = 0
+
+def mergeSort(myList):
+    global cnt
+    cnt += 1
+    if len(myList) > 1:
+
+        mid = len(myList) // 2
+        left = myList[:mid]
+        right = myList[mid:]
+
+        # Recursive call on each half
+        mergeSort(left)
+        mergeSort(right)
+
+        # Two iterators for traversing the two halves
+        i = 0
+        j = 0
+        
+        # Iterator for the main list
+        k = 0
+        
+        while i < len(left) and j < len(right):
+            cnt += 1
+
+            if left[i] <= right[j]:
+              # The value from the left half has been used
+              myList[k] = left[i]
+              # Move the iterator forward
+              i += 1
+            else:
+                myList[k] = right[j]
+                j += 1
+            # Move to the next slot
+            k += 1
+
+        # For all the remaining values
+        while i < len(left):
+            cnt += 1
+
+            myList[k] = left[i]
+            i += 1
+            k += 1
+
+        while j < len(right):
+            cnt +=1
+
+            myList[k]=right[j]
+            j += 1
+            k += 1
+
+
+
+
 def bubbleSort(arr):
     cnt = 0
     n = len(arr)
+    cnt += 1
 
-	# Traverse through all array elements
     for i in range(n-1):
-	# range(n) also work but outer loop will repeat one time more than needed.
-
-		# Last i elements are already in place
-    	for j in range(0, n-i-1):
-
-			# traverse the array from 0 to n-i-1
-			# Swap if the element found is greater
-			# than the next element
+        for j in range(0, n-i-1):
+            cnt +=1
             if arr[j] > arr[j + 1]:
                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
                 cnt += 1
     allcnt.append(cnt)
     
+
+def selection_sort(A):
+    cnt = 0
+    for i in range(len(A)):
+        
+        min_idx = i
+
+        for j in range(i+1, len(A)):
+            if A[min_idx] > A[j]:
+                min_idx = j
+            cnt += 1
+        A[i], A[min_idx] = A[min_idx], A[i]
+    allcnt.append(cnt)
+
+
+def finda(a):
+    pass
+    cnt = 0
+
+    for _ in a:
+        cnt += 1
+
+    allcnt.append(cnt)
+
+
+
 
 allcnt = []
 arr = []
@@ -31,15 +105,18 @@ cntamnt = []
 
 
 
-
 for x in range(200):
     arr.append(x)
-    cntamnt.append(x)
+    cntamnt.append(int(x))
     allcnt = []
     for _ in range(10):
         random.shuffle(arr)
-        bubbleSort(arr)
-    cntx.append(sum(allcnt)/len(allcnt))
+        cnt = 0
+        print(x, cnt)
+        mergeSort(arr)
+        print(x, cnt)
+        allcnt.append(cnt)
+    cntx.append(max(allcnt))
 
 
 
@@ -55,6 +132,10 @@ y6 = np.array([(x+1)*(math.log(x+1, 10)) for x in range(200)])
 y7 = np.array([2**x for x in range(200)])
 y8 = np.array([math.factorial(x) for x in range(10)])
 
+
+
+
+
 plt.plot(x, y, label="Algorithm")
 plt.plot(x, y2, label="O(n^2)")
 plt.plot(x, y3, label="O(1)")
@@ -66,8 +147,7 @@ plt.plot(xfac, y8, label="O(n!)")
 
 
 plt.legend()
-plt.ylim(0, 1000)
-
+plt.ylim(0, 1500)
 plt.show()
 
 def generate_functions():
@@ -83,4 +163,15 @@ print("highest count number: ")
 print(max(allcnt))
 print("gjennomsnitt av counters: ")
 print(sum(allcnt) / len(allcnt))
+
+
+a = cntamnt[:50]
+b = cntx[:50]
+
+for x in range(len(a)-1):
+    print((a[x] - b[x]) - (a[x+1] - b[x+1]))
+
+
 '''
+
+print()
