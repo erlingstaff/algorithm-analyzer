@@ -94,9 +94,30 @@ def finda(a):
         pass
     allcnt.append(cnt)
 
+def binary_search(arr, x):
+    cnt = 0
+    cnt += 1
+    low = 0
+    high = len(arr) - 1
+    mid = 0
+ 
+    while low <= high:
+        cnt += 1
+        mid = (high + low) // 2
+ 
+        cnt +=1
+        if arr[mid] < x:
+            low = mid + 1
+ 
+        elif arr[mid] > x:
+            high = mid - 1
+ 
+        else:
+            return mid
+    allcnt.append(cnt)
 
-    #allcnt.append(cnt)
-
+    
+    
 
 
 
@@ -117,7 +138,7 @@ for x in range(200):
     for _ in range(10):
         random.shuffle(arr)
         cnt = 0
-        finda(arr)
+        binary_search(arr, random.randint(0, len(arr)))
         allcnt.append(cnt)
     cntx.append(max(allcnt))
     #print(max(timer))
@@ -144,6 +165,7 @@ def determine():
     dx = cntamnt
     isO1(dy, dx)
     isOn(dy, dx)
+    isOlogn(dy, dx)
 
 
 determine()
@@ -175,7 +197,7 @@ plt.plot(xfac, y8, label="O(n!)")
 
 
 plt.legend()
-plt.ylim(0, 25000)
+plt.ylim(0, 500)
 plt.show()
 
 def generate_functions():

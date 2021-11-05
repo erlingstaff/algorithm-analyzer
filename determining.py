@@ -20,5 +20,9 @@ def isOn(y, x):
     if numsdiff.count(numsdiff[0]) == len(numsdiff):
         print("O(n)")
 
+
+def isOlogn(y, x):
+    pass
+
     
 
