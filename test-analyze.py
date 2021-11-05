@@ -4,7 +4,7 @@ import numpy as np
 import math
 import time
 import timeit
-
+from determining import *
 
 cnt = 0
 def mergeSort(myList):
@@ -74,8 +74,6 @@ def bubbleSort(arr):
                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
                 cnt += 1
     allcnt.append(cnt)
-    
-
 def selection_sort(A):
     cnt = 0
     for i in range(len(A)):
@@ -88,11 +86,13 @@ def selection_sort(A):
             cnt += 1
         A[i], A[min_idx] = A[min_idx], A[i]
     allcnt.append(cnt)
-
-
 def finda(a):
-    pass
     cnt = 0
+    cnt += 1
+    for _ in a:
+        cnt +=1
+        pass
+    allcnt.append(cnt)
 
 
     #allcnt.append(cnt)
@@ -117,7 +117,7 @@ for x in range(200):
     for _ in range(10):
         random.shuffle(arr)
         cnt = 0
-        mergeSort(arr)
+        finda(arr)
         allcnt.append(cnt)
     cntx.append(max(allcnt))
     #print(max(timer))
@@ -142,9 +142,13 @@ plt.show()
 def determine():
     dy = cntx
     dx = cntamnt
+    isO1(dy, dx)
+    isOn(dy, dx)
 
 
 determine()
+
+
 plt.figure(figsize=(14,8))
 y = np.array(cntx)
 x = np.array(cntamnt)
