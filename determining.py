@@ -32,19 +32,23 @@ def isOn(y, x):
     
 
 # General Functions
-def func(x, a, b, c):
-   return a * x * np.log(x*b) + c
+
+def func(x,a,b):
+    return a*np.log(x)+ b
 
 
 def isOlogn(y, x):
 
     # LOGARITHMIC REGRESSION, CHECK MAE AND COMPARE TO OTHER REGRESSIONS
+
+    plt.plot(x,y,'o')
     
-    x = np.array(x)
-    y = np.array(y)
+    x = np.array(x, dtype=float) #transform your data in a numpy array of floats 
+    y = np.array(y, dtype=float) #so the curve_fit can work
+    x[0] = x[1]
+    y[0] = y[1]    
+
+
     popt, pcov = curve_fit(func, x, y, maxfev=100000)
-
-
-    plt.plot(x, y, ls="none", marker='.')
-    plt.plot(x, func(x, *popt),'-')
+    plt.plot(x, func(x, *popt), label="Fitted Curve")
     plt.show()
