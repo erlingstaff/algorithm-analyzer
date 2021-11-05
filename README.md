@@ -1,4 +1,4 @@
 # algorithm-analyzer
 
-# # An attempt to progrematically analyze an algorithm's Big O notation
+An attempt to progrematically estimate an algorithm's Big O notation
 
