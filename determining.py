@@ -5,7 +5,6 @@ def isO1(y, x):
     nums = []
     for i in range(start):
         nums.append(y[i])
-    print(nums)
     if nums.count(nums[0]) == len(nums):
         print("O(1)")
     
@@ -18,9 +17,7 @@ def isOn(y, x):
         nums.append(y[i])
         if i != 0:
             numsdiff.append(y[i]-y[i-1])        
-    print (numsdiff.count(numsdiff[0]))
-    print(len(numsdiff))
-    if numsdiff.count(numsdiff[0] == len(numsdiff)):
+    if numsdiff.count(numsdiff[0]) == len(numsdiff):
         print("O(n)")
 
     
