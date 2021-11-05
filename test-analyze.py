@@ -54,14 +54,10 @@ def mergeSort(myList):
             myList[k]=right[j]
             j += 1
             k += 1
-
 def callfunc(arr):
     #random.shuffle(arr)
     #mergeSort(arr)
     finda(arr)
-
-
-
 def bubbleSort(arr):
     cnt = 0
     n = len(arr)
@@ -93,7 +89,6 @@ def finda(a):
         cnt +=1
         pass
     allcnt.append(cnt)
-
 def binary_search(arr, x):
     cnt = 0
     cnt += 1
@@ -133,16 +128,15 @@ for x in range(200):
     arr.append(x)
     cntamnt.append(int(x))
     allcnt = []
-    #timerr.append(timeit.timeit(lambda: callfunc(arr), number=100))
     #timerr.append(timeit.timeit(lambda: callfunc(arr), number=100)/100)
-    for _ in range(10):
+    for _ in range(25):
         random.shuffle(arr)
         cnt = 0
         binary_search(arr, random.randint(0, len(arr)))
         allcnt.append(cnt)
-    cntx.append(max(allcnt))
-    #print(max(timer))
-    #print(timer)
+    cntx.append(int(sum(allcnt)/len(allcnt)))
+
+    
 '''
 print("ABCD", timerr[0])
 yy = [0.5 for _ in range(200)]
@@ -197,7 +191,7 @@ plt.plot(xfac, y8, label="O(n!)")
 
 
 plt.legend()
-plt.ylim(0, 500)
+plt.ylim(0, 250)
 plt.show()
 
 def generate_functions():
