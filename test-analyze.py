@@ -113,20 +113,16 @@ for x in range(200):
     cntamnt.append(int(x))
     allcnt = []
     #timerr.append(timeit.timeit(lambda: callfunc(arr), number=100))
-    timerr.append(timeit.timeit(lambda: callfunc(arr), number=100)/100)
-    '''for _ in range(10):
+    #timerr.append(timeit.timeit(lambda: callfunc(arr), number=100)/100)
+    for _ in range(10):
         random.shuffle(arr)
         cnt = 0
-        start = time.process_time()
-
         mergeSort(arr)
-        end = time.time
-        timer.append(time.process_time() - start)
-        #allcnt.append(cnt)
-    cntx.append(max(timer))
-    print(max(timer))'''
+        allcnt.append(cnt)
+    cntx.append(max(allcnt))
+    #print(max(timer))
     #print(timer)
-
+'''
 print("ABCD", timerr[0])
 yy = [0.5 for _ in range(200)]
 print("BBB", yy[0])
@@ -140,8 +136,15 @@ plt.plot(xb)
 plt.legend()
 plt.show()
 
+'''
 
 
+def determine():
+    dy = cntx
+    dx = cntamnt
+
+
+determine()
 plt.figure(figsize=(14,8))
 y = np.array(cntx)
 x = np.array(cntamnt)
@@ -168,7 +171,7 @@ plt.plot(xfac, y8, label="O(n!)")
 
 
 plt.legend()
-plt.ylim(0, 1500)
+plt.ylim(0, 25000)
 plt.show()
 
 def generate_functions():
