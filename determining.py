@@ -42,6 +42,8 @@ def nlognfunc(x, a, b):
 def n2func(x, a, b):
     return a * (x * x) + b
 
+def O2nfunc(x, a, b):
+    return a * (2**x) * b
 
 
 # O() check-functions
@@ -104,3 +106,22 @@ def isOn2(y, x):
     plt.plot(x, ploty)
     plt.show()
 
+
+def isO2n(y, x):
+
+    plt.plot(x, y)
+    
+    x = np.array(x, dtype=float)
+    y = np.array(y, dtype=float)
+    x[0] = x[1]
+    y[0] = y[1]
+
+    popt, _ = curve_fit(O2nfunc, x, y, maxfev=100000)
+
+    ploty = O2nfunc(x, *popt)
+
+    MAE = mean_absolute_error(y, ploty)
+    print("Exponential regression O(2^n) MAE:", MAE)
+
+    plt.plot(x, ploty)
+    plt.show()

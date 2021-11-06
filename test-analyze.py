@@ -54,6 +54,17 @@ def mergeSort(myList):
             myList[k]=right[j]
             j += 1
             k += 1
+
+def fibonacci_of(n):
+    global cnt
+    cnt += 1
+    if n in {0, 1}:
+        return n
+    return fibonacci_of(n - 1) + fibonacci_of(n - 2) 
+
+def callfibonacci(arr):
+    fibonacci_of(len(arr))
+
 def callfunc(arr):
     random.shuffle(arr)
     mergeSort(arr)
@@ -112,7 +123,8 @@ def binary_search(arr, x):
     allcnt.append(cnt)
 
     
-    
+
+TEST_SIZE = 25
 
 
 
@@ -124,18 +136,19 @@ cntamnt = []
 global timerr
 timerr = []
 
-for x in range(200):
+for x in range(TEST_SIZE):
     arr.append(x)
     cntamnt.append(int(x))
     allcnt = []
     #timerr.append(timeit.timeit(lambda: callfunc(arr), number=100)/100)
     for _ in range(25):
-        random.shuffle(arr)
+        #random.shuffle(arr)
         cnt = 0
+        callfibonacci(arr)
         #callfunc(arr)
-        bubbleSort(arr)
+        #bubbleSort(arr)
         #binary_search(arr, random.randint(0, len(arr)))
-        #allcnt.append(cnt)
+        allcnt.append(cnt)
     cntx.append(int(sum(allcnt)/len(allcnt)))
 
     
@@ -164,6 +177,7 @@ def determine():
     isOlogn(dy, dx)
     isOnlogn(dy, dx)
     isOn2(dy, dx)
+    isO2n(dy, dx)
 
 determine()
 
@@ -172,12 +186,12 @@ plt.figure(figsize=(14,8))
 y = np.array(cntx)
 x = np.array(cntamnt)
 xfac = np.array([x for x in range(10)])
-y2 = np.array([x*x for x in range(200)])
-y3 = np.array([1 for _ in range(200)])
-y4 = np.array([math.log(x+1, 10) for x in range(200)])
-y5 = np.array([x for x in range(200)])
-y6 = np.array([(x+1)*(math.log(x+1, 10)) for x in range(200)])
-y7 = np.array([2**x for x in range(200)])
+y2 = np.array([x*x for x in range(TEST_SIZE)])
+y3 = np.array([1 for _ in range(TEST_SIZE)])
+y4 = np.array([math.log(x+1, 10) for x in range(TEST_SIZE)])
+y5 = np.array([x for x in range(TEST_SIZE)])
+y6 = np.array([(x+1)*(math.log(x+1, 10)) for x in range(TEST_SIZE)])
+y7 = np.array([2**x for x in range(TEST_SIZE)])
 y8 = np.array([math.factorial(x) for x in range(10)])
 
 
