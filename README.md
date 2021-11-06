@@ -14,9 +14,9 @@ Due to the Halting problem (https://en.wikipedia.org/wiki/Halting_problem), it i
 
 
 TODO:
-- Add regression for all except logarithmic
+- ~~Add regression for all except logarithmic~~
 - Implement Big O storage estimation
 - Add Big O notations from graph theory
 - https://codemirror.net/ For website code interface
 - https://skulpt.org/ Potential python sandbox/interpreter to sanitize user input
-- Sanitize untrusted python code
+- Sanitize untrusted python code https://stackoverflow.com/a/53076030
