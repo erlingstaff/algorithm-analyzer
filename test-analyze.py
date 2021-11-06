@@ -124,7 +124,7 @@ def binary_search(arr, x):
 
     
 
-TEST_SIZE = 25
+TEST_SIZE = 200
 
 
 
@@ -142,13 +142,13 @@ for x in range(TEST_SIZE):
     allcnt = []
     #timerr.append(timeit.timeit(lambda: callfunc(arr), number=100)/100)
     for _ in range(25):
-        #random.shuffle(arr)
+        random.shuffle(arr)
         cnt = 0
-        callfibonacci(arr)
+        #callfibonacci(arr)
         #callfunc(arr)
-        #bubbleSort(arr)
+        bubbleSort(arr)
         #binary_search(arr, random.randint(0, len(arr)))
-        allcnt.append(cnt)
+        #allcnt.append(cnt)
     cntx.append(int(sum(allcnt)/len(allcnt)))
 
     
@@ -170,15 +170,45 @@ plt.show()
 
 
 def determine():
+    all_mae = []
     dy = cntx
     dx = cntamnt
-    isO1(dy, dx)
-    isOn(dy, dx)
-    isOlogn(dy, dx)
-    isOnlogn(dy, dx)
-    isOn2(dy, dx)
-    isO2n(dy, dx)
-    isOfacn(dy, dx)
+    if isO1(dy, dx):
+        print("This algorithm is of O(1) complexity")
+    elif isOn(dy, dx):
+        print("This algorithm is of O(n) complexity")
+    else:
+        ret = isOlogn(dy, dx)
+        if ret[0] != -1:
+            all_mae.append(ret)
+
+        ret = isOnlogn(dy, dx)        
+        if ret[0] != -1:
+            all_mae.append(ret)
+
+        ret = isOn2(dy, dx)
+        if ret[0] != -1:
+            all_mae.append(ret)
+
+        ret = isO2n(dy, dx)
+        if ret[0] != -1:
+            all_mae.append(ret)
+
+        ret = isOfacn(dy, dx)
+        if ret[0] != -1:
+            all_mae.append(ret)
+
+        if all_mae == []:
+            print("Error, no models fit")
+        else:
+            closest = all_mae[0][0]
+            closestO = all_mae[0][1]
+            for x in all_mae:
+                if x[0] < closest:
+                    closest = x[0]
+                    closestO = x[1]
+            print("The best fit for this algorithm is ",closestO)
+
 
 determine()
 
