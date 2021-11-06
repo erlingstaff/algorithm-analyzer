@@ -55,9 +55,9 @@ def mergeSort(myList):
             j += 1
             k += 1
 def callfunc(arr):
-    #random.shuffle(arr)
-    #mergeSort(arr)
-    finda(arr)
+    random.shuffle(arr)
+    mergeSort(arr)
+    #finda(arr)
 def bubbleSort(arr):
     cnt = 0
     n = len(arr)
@@ -130,7 +130,7 @@ for x in range(200):
     allcnt = []
     #timerr.append(timeit.timeit(lambda: callfunc(arr), number=100)/100)
     for _ in range(25):
-        random.shuffle(arr)
+        #random.shuffle(arr)
         cnt = 0
         callfunc(arr)
         #binary_search(arr, random.randint(0, len(arr)))
@@ -161,7 +161,7 @@ def determine():
     isO1(dy, dx)
     isOn(dy, dx)
     isOlogn(dy, dx)
-
+    isOnlogn(dy, dx)
 
 determine()
 

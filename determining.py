@@ -31,29 +31,51 @@ def isOn(y, x):
     
     
 
-# General Functions
+# n-regression Functions
 
-def func(x,a,b):
-    return a*np.log(x)+ b
+def lognfunc(x,a,b):
+    return a * np.log(x) + b
+
+def nlognfunc(x, a, b):
+    return x * a * np.log(x) + b
 
 
 def isOlogn(y, x):
 
-    # LOGARITHMIC REGRESSION, CHECK MAE AND COMPARE TO OTHER REGRESSIONS
-
     plt.plot(x, y)
     
-    x = np.array(x, dtype=float) #transform your data in a numpy array of floats 
-    y = np.array(y, dtype=float) #so the curve_fit can work
+    x = np.array(x, dtype=float) 
+    y = np.array(y, dtype=float)
     x[0] = x[1]
     y[0] = y[1]
 
-
-
-    popt, _ = curve_fit(func, x, y, maxfev=100000)
-    ploty = func(x, *popt)
+    popt, _ = curve_fit(lognfunc, x, y, maxfev=100000)
+    ploty = lognfunc(x, *popt)
 
     MAE = mean_absolute_error(y, ploty)
-    print(MAE)
-    plt.plot(x, ploty, label="Fitted Curve")
+    print("Logarithmic regression O(log n):", MAE)
+
+    plt.plot(x, ploty)
     plt.show()
+
+
+def isOnlogn(y, x):
+
+    plt.plot(x, y)
+    
+    x = np.array(x, dtype=float)
+    y = np.array(y, dtype=float)
+    x[0] = x[1]
+    y[0] = y[1]
+
+    popt2, _ = curve_fit(nlognfunc, x, y, maxfev=100000)
+
+    ploty2 = nlognfunc(x, *popt2)
+
+    MAE2 = mean_absolute_error(y, ploty2)
+    print("n * Logarithmic regression O(n log n):", MAE2)
+
+    plt.plot(x, ploty2)
+    plt.show()
+
+
