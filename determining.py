@@ -5,7 +5,7 @@ from scipy.optimize import curve_fit
 import lmfit
 from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import FunctionTransformer
-
+from sklearn.metrics import mean_absolute_error
 
 def isO1(y, x):
     start = randint(0, len(y)-20)
@@ -41,14 +41,19 @@ def isOlogn(y, x):
 
     # LOGARITHMIC REGRESSION, CHECK MAE AND COMPARE TO OTHER REGRESSIONS
 
-    plt.plot(x,y,'o')
+    plt.plot(x, y)
     
     x = np.array(x, dtype=float) #transform your data in a numpy array of floats 
     y = np.array(y, dtype=float) #so the curve_fit can work
     x[0] = x[1]
-    y[0] = y[1]    
+    y[0] = y[1]
 
 
-    popt, pcov = curve_fit(func, x, y, maxfev=100000)
-    plt.plot(x, func(x, *popt), label="Fitted Curve")
+
+    popt, _ = curve_fit(func, x, y, maxfev=100000)
+    ploty = func(x, *popt)
+
+    MAE = mean_absolute_error(y, ploty)
+    print(MAE)
+    plt.plot(x, ploty, label="Fitted Curve")
     plt.show()

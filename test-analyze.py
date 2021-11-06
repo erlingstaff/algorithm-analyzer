@@ -132,7 +132,8 @@ for x in range(200):
     for _ in range(25):
         random.shuffle(arr)
         cnt = 0
-        binary_search(arr, random.randint(0, len(arr)))
+        callfunc(arr)
+        #binary_search(arr, random.randint(0, len(arr)))
         allcnt.append(cnt)
     cntx.append(int(sum(allcnt)/len(allcnt)))
 
