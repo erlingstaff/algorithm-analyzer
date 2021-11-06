@@ -39,6 +39,12 @@ def lognfunc(x,a,b):
 def nlognfunc(x, a, b):
     return x * a * np.log(x) + b
 
+def n2func(x, a, b):
+    return a * (x * x) + b
+
+
+
+# O() check-functions
 
 def isOlogn(y, x):
 
@@ -53,7 +59,7 @@ def isOlogn(y, x):
     ploty = lognfunc(x, *popt)
 
     MAE = mean_absolute_error(y, ploty)
-    print("Logarithmic regression O(log n):", MAE)
+    print("Logarithmic regression O(log n) MAE:", MAE)
 
     plt.plot(x, ploty)
     plt.show()
@@ -73,9 +79,28 @@ def isOnlogn(y, x):
     ploty2 = nlognfunc(x, *popt2)
 
     MAE2 = mean_absolute_error(y, ploty2)
-    print("n * Logarithmic regression O(n log n):", MAE2)
+    print("n * Logarithmic regression O(n log n) MAE:", MAE2)
 
     plt.plot(x, ploty2)
     plt.show()
 
+
+def isOn2(y, x):
+
+    plt.plot(x, y)
+    
+    x = np.array(x, dtype=float)
+    y = np.array(y, dtype=float)
+    x[0] = x[1]
+    y[0] = y[1]
+
+    popt, _ = curve_fit(n2func, x, y, maxfev=100000)
+
+    ploty = n2func(x, *popt)
+
+    MAE = mean_absolute_error(y, ploty)
+    print("Quadratic regression O(n^2) MAE:", MAE)
+
+    plt.plot(x, ploty)
+    plt.show()
 

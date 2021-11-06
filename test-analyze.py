@@ -130,11 +130,12 @@ for x in range(200):
     allcnt = []
     #timerr.append(timeit.timeit(lambda: callfunc(arr), number=100)/100)
     for _ in range(25):
-        #random.shuffle(arr)
+        random.shuffle(arr)
         cnt = 0
-        callfunc(arr)
+        #callfunc(arr)
+        bubbleSort(arr)
         #binary_search(arr, random.randint(0, len(arr)))
-        allcnt.append(cnt)
+        #allcnt.append(cnt)
     cntx.append(int(sum(allcnt)/len(allcnt)))
 
     
@@ -162,6 +163,7 @@ def determine():
     isOn(dy, dx)
     isOlogn(dy, dx)
     isOnlogn(dy, dx)
+    isOn2(dy, dx)
 
 determine()
 
