@@ -2,13 +2,16 @@ from random import randint
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
-import lmfit
-from sklearn.linear_model import LinearRegression
-from sklearn.preprocessing import FunctionTransformer
 from sklearn.metrics import mean_absolute_error
+from scipy.special import factorial
+
+
+
+
+# O(1) and O(n) checker functions
 
 def isO1(y, x):
-    start = randint(0, len(y)-20)
+    start = randint(0, len(y))
     nums = []
     for i in range(start):
         nums.append(y[i])
@@ -17,21 +20,18 @@ def isO1(y, x):
     
 
 def isOn(y, x):
-    start = randint(0, len(y)-20)
+    start = randint(0, len(y))
     nums = []
     numsdiff = []
     for i in range(start):
         nums.append(y[i])
         if i != 0:
-            numsdiff.append(y[i]-y[i-1])        
+            numsdiff.append(y[i]-y[i-1])
     if numsdiff.count(numsdiff[0]) == len(numsdiff):
         print("O(n)")
 
 
-    
-    
-
-# n-regression Functions
+# O(n)-regression Functions
 
 def lognfunc(x,a,b):
     return a * np.log(x) + b
@@ -43,7 +43,12 @@ def n2func(x, a, b):
     return a * (x * x) + b
 
 def O2nfunc(x, a, b):
-    return a * (2**x) * b
+    return a * (2**x) + b
+
+def nfacfunc(x, a, b):
+    x = factorial(x)
+    return a * x + b
+
 
 
 # O() check-functions
@@ -125,3 +130,24 @@ def isO2n(y, x):
 
     plt.plot(x, ploty)
     plt.show()
+
+
+def isOfacn(y, x):
+
+    plt.plot(x, y)
+    
+    x = np.array(x, dtype=float)
+    y = np.array(y, dtype=float)
+    x[0] = x[1]
+    y[0] = y[1]
+
+    popt, _ = curve_fit(nfacfunc, x, y, maxfev=100000)
+
+    ploty = nfacfunc(x, *popt)
+
+    MAE = mean_absolute_error(y, ploty)
+    print("Factorial regression O(!n) MAE:", MAE)
+
+    plt.plot(x, ploty)
+    plt.show()
+

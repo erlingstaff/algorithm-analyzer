@@ -178,6 +178,7 @@ def determine():
     isOnlogn(dy, dx)
     isOn2(dy, dx)
     isO2n(dy, dx)
+    isOfacn(dy, dx)
 
 determine()
 
