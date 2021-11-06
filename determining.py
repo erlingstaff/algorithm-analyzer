@@ -101,7 +101,7 @@ def isOnlogn(y, x):
         ploty = nlognfunc(x, *popt)
 
         MAE = mean_absolute_error(y, ploty)
-        print("n * Logarithmic regression O(nlog n) MAE:", MAE)
+        print("Logarithmic linear regression O(nlog n) MAE:", MAE)
 
         plt.plot(x, ploty)
         plt.show()

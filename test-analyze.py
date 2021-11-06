@@ -64,11 +64,11 @@ def fibonacci_of(n):
 
 def callfibonacci(arr):
     fibonacci_of(len(arr))
-
 def callfunc(arr):
-    random.shuffle(arr)
-    mergeSort(arr)
-    #finda(arr)
+    #random.shuffle(arr)
+    #mergeSort(arr)
+    finda(arr)
+    #exponential(len(arr))
 def bubbleSort(arr):
     cnt = 0
     n = len(arr)
@@ -121,6 +121,11 @@ def binary_search(arr, x):
         else:
             return mid
     allcnt.append(cnt)
+def exponential(num):
+    global cnt
+    cnt += 1
+    for _ in range(num):
+        exponential(num-1)
 
     
 
@@ -142,31 +147,17 @@ for x in range(TEST_SIZE):
     allcnt = []
     #timerr.append(timeit.timeit(lambda: callfunc(arr), number=100)/100)
     for _ in range(25):
-        random.shuffle(arr)
+        #random.shuffle(arr)
         cnt = 0
         #callfibonacci(arr)
-        #callfunc(arr)
-        bubbleSort(arr)
+        callfunc(arr)
+        #selection_sort(arr)
+        #bubbleSort(arr)
         #binary_search(arr, random.randint(0, len(arr)))
         #allcnt.append(cnt)
     cntx.append(int(sum(allcnt)/len(allcnt)))
 
     
-'''
-print("ABCD", timerr[0])
-yy = [0.5 for _ in range(200)]
-print("BBB", yy[0])
-
-plt.figure(figsize=(14,8))
-xb = np.array(timerr)
-yb = np.array(yy)
-
-
-plt.plot(xb)
-plt.legend()
-plt.show()
-
-'''
 
 
 def determine():
@@ -207,7 +198,7 @@ def determine():
                 if x[0] < closest:
                     closest = x[0]
                     closestO = x[1]
-            print("The best fit for this algorithm is ",closestO)
+            print("The best fit for this algorithm is ", closestO, " this means that for each n, the algorithm ...")
 
 
 determine()
