@@ -203,7 +203,7 @@ def determine():
 
 determine()
 
-
+# CREATING NP ARRAYS OF THE DIFFERENT FUNCTIONS
 plt.figure(figsize=(14,8))
 y = np.array(cntx)
 x = np.array(cntamnt)
@@ -216,8 +216,7 @@ y6 = np.array([(x+1)*(math.log(x+1, 10)) for x in range(TEST_SIZE)])
 y7 = np.array([2**x for x in range(TEST_SIZE)])
 y8 = np.array([math.factorial(x) for x in range(10)])
 
-
-
+# PLOTTING
 plt.plot(x, y, label="Algorithm")
 plt.plot(x, y2, label="O(n^2)")
 plt.plot(x, y3, label="O(1)")
@@ -226,35 +225,15 @@ plt.plot(x, y5, label="O(n)")
 plt.plot(x, y6, label="O(n log n)")
 plt.plot(x, y7, label="O(2^n)")
 plt.plot(xfac, y8, label="O(n!)")
-
-
-
 plt.legend()
 plt.ylim(0, 250)
 plt.show()
 
+
+#TBD DRIVER CODE
 def generate_functions():
     pass
 
 
 def evaluate():
     pass
-
-
-'''
-print("highest count number: ")
-print(max(allcnt))
-print("gjennomsnitt av counters: ")
-print(sum(allcnt) / len(allcnt))
-
-
-a = cntamnt[:50]
-b = cntx[:50]
-
-for x in range(len(a)-1):
-    print((a[x] - b[x]) - (a[x+1] - b[x+1]))
-
-
-'''
-
-print()
