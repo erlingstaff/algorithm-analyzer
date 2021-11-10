@@ -147,18 +147,17 @@ for x in range(TEST_SIZE):
     allcnt = []
     #timerr.append(timeit.timeit(lambda: callfunc(arr), number=100)/100)
     for _ in range(25):
-        #random.shuffle(arr)
+        random.shuffle(arr)
         cnt = 0
         #callfibonacci(arr)
-        callfunc(arr)
+        #callfunc(arr)
         #selection_sort(arr)
-        #bubbleSort(arr)
+        bubbleSort(arr)
         #binary_search(arr, random.randint(0, len(arr)))
         #allcnt.append(cnt)
     cntx.append(int(sum(allcnt)/len(allcnt)))
 
     
-
 
 def determine():
     all_mae = []
